@@ -9,6 +9,13 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import fr.free.nrw.commons.R;
+
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class MainActivityUITest {
@@ -18,6 +25,14 @@ public class MainActivityUITest {
 
     @Before
     public void setUp() throws Exception {
+    }
+
+    @Test
+    public void initialViewsExist() {
+        onView(withId(R.id.toolbar)).check(matches(isDisplayed()));
+        onView(withId(R.id.tab_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.pager)).check(matches(isDisplayed()));
+        onView(withId(R.id.navigation_view)).check(matches(isDisplayed()));
     }
 
     @Test

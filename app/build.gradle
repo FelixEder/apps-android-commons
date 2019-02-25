@@ -105,6 +105,8 @@ android {
         minSdkVersion 15
         targetSdkVersion 27
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.android.test.runner.MultiDexTestRunner"
+
         vectorDrawables.useSupportLibrary = true
     }
 
