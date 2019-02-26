@@ -36,62 +36,10 @@ public class MainActivityUITest {
     }
 
     @Test
-    public void onCreate() {
+    public void onClickNearbyInfoTest() {
     }
 
     @Test
-    public void onSaveInstanceState() {
-    }
-
-    @Test
-    public void onAuthCookieAcquired() {
-    }
-
-    @Test
-    public void setNumOfUploads() {
-    }
-
-    @Test
-    public void hideTabs() {
-    }
-
-    @Test
-    public void showTabs() {
-    }
-
-    @Test
-    public void onAuthFailure() {
-    }
-
-    @Test
-    public void onBackPressed() {
-    }
-
-    @Test
-    public void onBackStackChanged() {
-    }
-
-    @Test
-    public void onCreateOptionsMenu() {
-    }
-
-    @Test
-    public void onOptionsItemSelected() {
-    }
-
-    @Test
-    public void onActivityResult() {
-    }
-
-    @Test
-    public void onRequestPermissionsResult() {
-    }
-
-    @Test
-    public void onResume() {
-    }
-
-    @Test
-    public void onDestroy() {
+    public void onClickNotificationTest() {
     }
 }
