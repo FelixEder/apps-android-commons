@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.TextView;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -21,12 +22,16 @@ import fr.free.nrw.commons.utils.ConfigUtils;
 
 public class WelcomeActivity extends BaseActivity {
 
-    @Inject @Named("application_preferences") BasicKvStore kvStore;
+    @Inject
+    @Named("application_preferences")
+    BasicKvStore kvStore;
 
     @BindView(R.id.welcomePager)
     ViewPager pager;
     @BindView(R.id.welcomePagerIndicator)
     CirclePageIndicator indicator;
+    @BindView(R.id.finishTutorialButton)
+    TextView finishTutorialButton;
 
     private WelcomePagerAdapter adapter = new WelcomePagerAdapter();
     private boolean isQuiz;
@@ -52,13 +57,13 @@ public class WelcomeActivity extends BaseActivity {
         } else {
             isQuiz = false;
         }
+        ButterKnife.bind(this);
 
         // Enable skip button if beta flavor
         if (ConfigUtils.isBetaFlavour()) {
-            findViewById(R.id.finishTutorialButton).setVisibility(View.VISIBLE);
+            finishTutorialButton.setVisibility(View.VISIBLE);
         }
 
-        ButterKnife.bind(this);
 
         pager.setAdapter(adapter);
         indicator.setViewPager(pager);
