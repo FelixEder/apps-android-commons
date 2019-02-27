@@ -8,22 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.ListAdapter;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
-import javax.inject.Inject;
-import javax.inject.Named;
-
+import android.widget.*;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import fr.free.nrw.commons.R;
 import fr.free.nrw.commons.di.CommonsDaggerSupportFragment;
 import fr.free.nrw.commons.kvstore.BasicKvStore;
 import fr.free.nrw.commons.kvstore.JsonKvStore;
 import fr.free.nrw.commons.utils.ConfigUtils;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -40,18 +36,23 @@ public class ContributionsListFragment extends CommonsDaggerSupportFragment {
     TextView waitingMessage;
     @BindView(R.id.loadingContributionsProgressBar)
     ProgressBar progressBar;
-    @BindView(R.id.fab_plus)
+    @BindView(R.id.fab_pluss)
     FloatingActionButton fabPlus;
-    @BindView(R.id.fab_camera)
+    @BindView(R.id.fab_cameraa)
     FloatingActionButton fabCamera;
-    @BindView(R.id.fab_gallery)
+    @BindView(R.id.fab_galleryy)
     FloatingActionButton fabGallery;
     @BindView(R.id.noDataYet)
     TextView noDataYet;
 
-    @Inject @Named("default_preferences") BasicKvStore basicKvStore;
-    @Inject @Named("direct_nearby_upload_prefs") JsonKvStore directKvStore;
-    @Inject ContributionController controller;
+    @Inject
+    @Named("default_preferences")
+    BasicKvStore basicKvStore;
+    @Inject
+    @Named("direct_nearby_upload_prefs")
+    JsonKvStore directKvStore;
+    @Inject
+    ContributionController controller;
 
     private Animation fab_close;
     private Animation fab_open;
@@ -76,10 +77,9 @@ public class ContributionsListFragment extends CommonsDaggerSupportFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initializeAnimations();
-        setListeners();
     }
 
-    public void changeEmptyScreen(boolean isEmpty){
+    public void changeEmptyScreen(boolean isEmpty) {
         this.noDataYet.setVisibility(isEmpty ? VISIBLE : GONE);
     }
 
@@ -90,15 +90,9 @@ public class ContributionsListFragment extends CommonsDaggerSupportFragment {
         rotate_backward = AnimationUtils.loadAnimation(getActivity(), R.anim.rotate_backward);
     }
 
-    private void setListeners() {
-        fabPlus.setOnClickListener(view -> animateFAB(isFabOpen));
-        fabCamera.setOnClickListener(view -> controller.initiateCameraPick(getActivity()));
-        fabGallery.setOnClickListener(view -> controller.initiateGalleryPick(getActivity(), true));
-    }
-
     private void animateFAB(boolean isFabOpen) {
         this.isFabOpen = !isFabOpen;
-        if (fabPlus.isShown()){
+        if (fabPlus.isShown()) {
             if (isFabOpen) {
                 fabPlus.startAnimation(rotate_backward);
                 fabCamera.startAnimation(fab_close);
@@ -112,12 +106,13 @@ public class ContributionsListFragment extends CommonsDaggerSupportFragment {
                 fabCamera.show();
                 fabGallery.show();
             }
-            this.isFabOpen=!isFabOpen;
+            this.isFabOpen = !isFabOpen;
         }
     }
 
     /**
      * Responsible to set progress bar invisible and visible
+     *
      * @param isVisible True when contributions list should be hidden.
      */
     public void changeProgressBarVisibility(boolean isVisible) {
@@ -138,6 +133,7 @@ public class ContributionsListFragment extends CommonsDaggerSupportFragment {
 
     /**
      * Sets adapter to contributions list. If beta mode, sets upload count for beta explicitly.
+     *
      * @param adapter List adapter for uploads of contributor
      */
     public void setAdapter(ListAdapter adapter) {
@@ -146,6 +142,26 @@ public class ContributionsListFragment extends CommonsDaggerSupportFragment {
         if (ConfigUtils.isBetaFlavour()) {
             //TODO: add betaSetUploadCount method
             ((ContributionsFragment) getParentFragment()).betaSetUploadCount(adapter.getCount());
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
+    @OnClick({R.id.fab_cameraa, R.id.fab_galleryy, R.id.fab_pluss})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.fab_cameraa:
+                controller.initiateCameraPick(getActivity());
+                break;
+            case R.id.fab_galleryy:
+                controller.initiateGalleryPick(getActivity(), true);
+                break;
+            case R.id.fab_pluss:
+                animateFAB(isFabOpen);
+                break;
         }
     }
 
