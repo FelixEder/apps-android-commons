@@ -26,6 +26,11 @@ public class WelcomeActivityTest {
     public ActivityTestRule<WelcomeActivity> mAppActivityTestRule =
             new ActivityTestRule<>(WelcomeActivity.class, false, true);
 
+    /**
+     * Test to confirm the functional requirements WelcomeActivity.Feature1.1.Functional.Requirements.1-3
+     *
+     * * tests that the initial view elements welcomePager, welcomePagerIndicator and finishTutorialButton is displayed
+     */
     @Test
     public void initialViewsExist() {
         onView(withId(R.id.welcomePager)).check(matches(isDisplayed()));
