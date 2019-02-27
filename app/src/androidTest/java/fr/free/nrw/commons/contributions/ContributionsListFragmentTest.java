@@ -22,7 +22,7 @@ public class ContributionsListFragmentTest {
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     /**
-     * Test to confirm the functional requirements ContributionsListFragment.Feature1.1.Functional.Requirements.1
+     * Test to confirm the functional requirements ContributionsListFragment.Feature.FabPlusMenu.Functional.Requirements.1
      */
     @Test
     public void fabPlussClickTest(){
@@ -35,7 +35,7 @@ public class ContributionsListFragmentTest {
     }
 
     /**
-     * Test to confirm the functional requirements ContributionsListFragment.Feature1.1.Functional.Requirements.2
+     * Test to confirm the functional requirements ContributionsListFragment.Feature.FabPlusMenu.Functional.Requirements.2
      */
     @Test
     public void fabPlussBackClickTest(){
@@ -50,7 +50,7 @@ public class ContributionsListFragmentTest {
     }
 
     /**
-     * Test to confirm the functional requirements ContributionsListFragment.Feature1.1.Functional.Requirements.3
+     * Test to confirm the functional requirements ContributionsListFragment.Feature.FabPlusMenu.Functional.Requirements.3
      */
     @Test
     public void fabGallaryyClickTest(){
@@ -65,7 +65,7 @@ public class ContributionsListFragmentTest {
     }
 
     /**
-     * Test to confirm the functional requirements ContributionsListFragment.Feature1.1.Functional.Requirements.4
+     * Test to confirm the functional requirements ContributionsListFragment.Feature.FabPlusMenu.Functional.Requirements.4
      */
     @Test
     public void fabCameraaClickTest(){
